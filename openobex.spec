@@ -2,7 +2,7 @@ Summary:	Library for using OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
 Version:	0.9.8
-Release:	0.2
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-%{version}.tar.gz
