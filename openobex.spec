@@ -7,15 +7,15 @@ License:	LGPL
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.gz
 Source1:	%{name}-apps-%{version}.tar.gz
-URL:		 http://openobex.sourceforge.net
+URL:		http://openobex.sourceforge.net
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This library tries to implement a generic OBEX Session Protocol. It does not implement the OBEX Application FrameWork.
+This library tries to implement a generic OBEX Session Protocol. It
+does not implement the OBEX Application FrameWork.
 
 # %description -l pl
 # TODO
-
 
 %package devel
 Summary:	Header files for Open OBEX
@@ -51,7 +51,7 @@ Summary(pl):	Narzêdzia Open OBEX
 Group:		Applications/Communications
 
 %description progs
-This package contains utility programs ... 
+This package contains utility programs ...
 
 %description progs -l pl
 Narzêdzia do ...
@@ -77,13 +77,14 @@ ${__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
         DESTDIR=$RPM_BUILD_ROOT \
-				m4datadir=%{_aclocaldir} 
+	m4datadir=%{_aclocaldir}
 
 cd %{name}-apps-%{version}
 %{__make} install \
-        DESTDIR=$RPM_BUILD_ROOT 
+        DESTDIR=$RPM_BUILD_ROOT
 
 
 %clean
