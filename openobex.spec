@@ -5,7 +5,7 @@ Version:	1.0.0
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
 URL:		http://openobex.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,10 +61,9 @@ biblioteki Open OBEX.
 %setup -q
 
 %build
-
 %configure2_13
 
-${__make}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
