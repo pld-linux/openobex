@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenobex.so
-%attr(755,root,root) %{_libdir}/libopenobex.la
+%{_libdir}/libopenobex.la
 %attr(755,root,root) %{_bindir}/openobex-config
 %{_includedir}/*
 %{_aclocaldir}/*
