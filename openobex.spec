@@ -2,7 +2,7 @@ Summary:	Library for using OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
 Version:	0.9.8
-Release:	0.1
+Release:	0.2
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-%{version}.tar.gz
@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/libopenobex-0.9.so.*.*
 
 %files devel
@@ -112,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
+%doc %{name}-apps-%{version}/{AUTHORS,ChangeLog,README}
 %attr(755,root,root) %{_bindir}/irobex_palm3
 %attr(755,root,root) %{_bindir}/irxfer
 %attr(755,root,root) %{_bindir}/obex_tcp
