@@ -1,21 +1,23 @@
 Summary:	Library for using OBEX
-Summary(pl):	Biblioteka PNG
+Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
 Version:	0.9.8
 Release:	0.1
 License:	LGPL
 Group:		Libraries
-Source0:	%{name}-%{version}.tar.gz
-Source1:	%{name}-apps-%{version}.tar.gz
-URL:		http://openobex.sourceforge.net
+Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-%{version}.tar.gz
+Source1:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-apps-%{version}.tar.gz
+URL:		http://openobex.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This library tries to implement a generic OBEX Session Protocol. It
 does not implement the OBEX Application FrameWork.
 
-# %description -l pl
-# TODO
+%description -l pl
+Ta biblioteka to próba implementacji podstawowego protoko³u sesji OBEX
+Session Protocol. OBEX Application FrameWork nie jest
+zaimplementowany.
 
 %package devel
 Summary:	Header files for Open OBEX
@@ -31,7 +33,6 @@ Open OBEX library.
 W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
 programistów u¿ywaj±cych biblioteki Open OBEX.
 
-
 %package static
 Summary:	Static Open OBEX library
 Summary(pl):	Biblioteka statyczna Open OBEX
@@ -44,18 +45,18 @@ Static Open OBEX library.
 %description static -l pl
 Biblioteka statyczna Open OBEX.
 
-
 %package progs
 Summary:	Open OBEX utility programs
 Summary(pl):	Narzêdzia Open OBEX
 Group:		Applications/Communications
 
 %description progs
-This package contains utility programs ...
+This package contains utility programs made to show Open OBEX library
+usage.
 
 %description progs -l pl
-Narzêdzia do ...
-
+Ten pakiet zawiera narzêdzia zrobione aby pokazaæ sposób u¿ycia
+biblioteki Open OBEX.
 
 %prep
 %setup -q -a1
@@ -85,7 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 cd %{name}-apps-%{version}
 %{__make} install \
         DESTDIR=$RPM_BUILD_ROOT
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
