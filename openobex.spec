@@ -1,12 +1,13 @@
 Summary:	Library for using OBEX
+Summary(es):	Biblioteca para usar OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
-Version:	1.0.0
-Release:	2
+Version:	1.0.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
-# Source0-md5:	b845c760114027b6b7cad16a84963908
+# Source0-md5:	3742666bb98259face76be49b73ea89d
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,6 +18,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This library tries to implement a generic OBEX Session Protocol. It
 does not implement the OBEX Application FrameWork.
 
+%description -l es
+Esta biblioteca procura dar una implementación genérica del protocolo
+OBEX Session Protocol. La implementación de OBEX Application FrameWork
+no está incluida.
+
 %description -l pl
 Ta biblioteka to próba implementacji podstawowego protoko³u sesji OBEX
 Session Protocol. OBEX Application FrameWork nie jest
@@ -24,6 +30,7 @@ zaimplementowany.
 
 %package devel
 Summary:	Header files for Open OBEX
+Summary(es):	Ficheros de cabecera para Open OBEX
 Summary(pl):	Pliki nag³ówkowe Open OBEX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
@@ -32,12 +39,17 @@ Requires:	%{name} = %{version}
 The header files are only needed for development of programs using the
 Open OBEX library.
 
+%description devel -l es
+Estos ficheros de cabecera sólo son necesarios para desarrollar
+programas que usan la biblioteca Open OBEX.
+
 %description devel -l pl
 W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
 programistów u¿ywaj±cych biblioteki Open OBEX.
 
 %package static
 Summary:	Static Open OBEX library
+Summary(es):	Biblioteca estática de Open OBEX
 Summary(pl):	Biblioteka statyczna Open OBEX
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
@@ -56,6 +68,10 @@ Group:		Applications/Communications
 %description progs
 This package contains utility programs made to show Open OBEX library
 usage.
+
+%description progs -l es
+Este paquete contiene unas herramientas hechas para demonstrar el uso
+de la biblioteca Open OBEX.
 
 %description progs -l pl
 Ten pakiet zawiera narzêdzia zrobione aby pokazaæ sposób u¿ycia
