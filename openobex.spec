@@ -2,12 +2,15 @@ Summary:	Library for using OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
 Version:	1.0.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
 # Source0-md5:	b845c760114027b6b7cad16a84963908
 URL:		http://openobex.sourceforge.net/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -62,7 +65,10 @@ biblioteki Open OBEX.
 %setup -q
 
 %build
-%configure2_13
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%configure
 
 %{__make}
 
@@ -70,7 +76,7 @@ biblioteki Open OBEX.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-        DESTDIR=$RPM_BUILD_ROOT \
+	DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
 %clean
