@@ -1,12 +1,11 @@
 Summary:	Library for using OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
-Version:	0.9.8
+Version:	1.0.0
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-%{version}.tar.gz
-Source1:	ftp://ftp.sourceforge.net/pub/sourceforge/openobex/%{name}-apps-%{version}.tar.gz
 URL:		http://openobex.sourceforge.net/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,20 +58,11 @@ Ten pakiet zawiera narzêdzia zrobione aby pokazaæ sposób u¿ycia
 biblioteki Open OBEX.
 
 %prep
-%setup -q -a1
+%setup -q
 
 %build
-CFLAGS="%{rpmcflags}" \
-./configure --prefix=%{_prefix}
 
-${__make}
-
-cd %{name}-apps-%{version}
-ln -s ../src openobex
-
-PATH="$PATH:.." \
-CFLAGS="%{rpmcflags}" \
-./configure --prefix=%{_prefix}
+%configure2_13
 
 ${__make}
 
@@ -83,10 +73,6 @@ rm -rf $RPM_BUILD_ROOT
         DESTDIR=$RPM_BUILD_ROOT \
 	m4datadir=%{_aclocaldir}
 
-cd %{name}-apps-%{version}
-%{__make} install \
-        DESTDIR=$RPM_BUILD_ROOT
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -96,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_libdir}/libopenobex-0.9.so.*.*
+%attr(755,root,root) %{_libdir}/libopenobex-?.?.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
@@ -109,11 +95,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-
-%files progs
-%defattr(644,root,root,755)
-%doc %{name}-apps-%{version}/{AUTHORS,ChangeLog,README}
-%attr(755,root,root) %{_bindir}/irobex_palm3
-%attr(755,root,root) %{_bindir}/irxfer
-%attr(755,root,root) %{_bindir}/obex_tcp
-%attr(755,root,root) %{_bindir}/obex_test
