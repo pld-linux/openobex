@@ -1,4 +1,6 @@
+# Conditional build:
 %bcond_without	static_libs	# don't build static library
+#
 Summary:	Library for using OBEX
 Summary(es):	Biblioteca para usar OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
