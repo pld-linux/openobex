@@ -1,3 +1,4 @@
+%bcond_without	static	# don't build static library
 Summary:	Library for using OBEX
 Summary(es):	Biblioteca para usar OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
@@ -84,7 +85,9 @@ biblioteki Open OBEX.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%configure
+%{__automake}
+%configure \
+	%{!?with_static:--disable-static}
 
 %{__make}
 
@@ -114,6 +117,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_aclocaldir}/*
 
+%if %{with static}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
