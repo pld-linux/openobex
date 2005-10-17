@@ -1,0 +1,22 @@
+diff -urN openobex-1.0.1/src/obex.def openobex-1.0.1-ch/src/obex.def
+--- openobex-1.0.1/src/obex.def	2003-10-01 13:17:13.000000000 +0200
++++ openobex-1.0.1-ch/src/obex.def	2005-10-17 17:17:05.000000000 +0200
+@@ -27,6 +27,7 @@
+ OBEX_CharToUnicode
+ OBEX_ResponseToString
+ OBEX_GetResponseMessage
++OBEX_SetTransportMTU
+ InOBEX_ServerRegister
+ InOBEX_TransportConnect
+ IrOBEX_ServerRegister
+diff -urN openobex-1.0.1/src/obex.sym openobex-1.0.1-ch/src/obex.sym
+--- openobex-1.0.1/src/obex.sym	2003-10-01 13:17:13.000000000 +0200
++++ openobex-1.0.1-ch/src/obex.sym	2005-10-17 17:17:10.000000000 +0200
+@@ -26,6 +26,7 @@
+ OBEX_CharToUnicode
+ OBEX_ResponseToString
+ OBEX_GetResponseMessage
++OBEX_SetTransportMTU
+ InOBEX_ServerRegister
+ InOBEX_TransportConnect
+ IrOBEX_ServerRegister
