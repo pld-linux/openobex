@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
@@ -5,13 +6,12 @@ Summary:	Library for using OBEX
 Summary(es):	Biblioteca para usar OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
-Version:	1.0.1
-Release:	2
+Version:	1.2
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
-# Source0-md5:	3742666bb98259face76be49b73ea89d
-Patch1:		openobex-MTU.patch
+# Source0-md5:	c92746ae7bd69255c2c41f51e9349c65
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -83,7 +83,6 @@ biblioteki Open OBEX.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -111,15 +110,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_libdir}/libopenobex-?.?.so.*.*
+%attr(755,root,root) %{_libdir}/libopenobex.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenobex.so
 %{_libdir}/libopenobex.la
-%attr(755,root,root) %{_bindir}/openobex-config
 %{_includedir}/*
 %{_aclocaldir}/*
+%{_pkgconfigdir}/*
 
 %if %{with static_libs}
 %files static
