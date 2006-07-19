@@ -64,20 +64,22 @@ Static Open OBEX library.
 %description static -l pl
 Biblioteka statyczna Open OBEX.
 
-%package progs
+%package apps
 Summary:	Open OBEX utility programs
 Summary(pl):	Narzêdzia Open OBEX
 Group:		Applications/Communications
+Requires:	%{name} = %{version}-%{release}
+Obsoletes:	openobex-progs
 
-%description progs
+%description apps
 This package contains utility programs made to show Open OBEX library
 usage.
 
-%description progs -l es
+%description apps -l es
 Este paquete contiene unas herramientas hechas para demonstrar el uso
 de la biblioteca Open OBEX.
 
-%description progs -l pl
+%description apps -l pl
 Ten pakiet zawiera narzêdzia zrobione aby pokazaæ sposób u¿ycia
 biblioteki Open OBEX.
 
@@ -90,6 +92,7 @@ biblioteki Open OBEX.
 %{__autoconf}
 %{__automake}
 %configure \
+	--enable-apps \
 	%{!?with_static_libs:--disable-static}
 
 %{__make}
@@ -125,3 +128,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 %endif
+
+%files apps
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/ircp
+%attr(755,root,root) %{_bindir}/irobex_palm3
+%attr(755,root,root) %{_bindir}/irxfer
+%attr(755,root,root) %{_bindir}/obex_tcp
+%attr(755,root,root) %{_bindir}/obex_test
