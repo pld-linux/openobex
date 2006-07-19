@@ -37,7 +37,7 @@ Summary:	Header files for Open OBEX
 Summary(es):	Ficheros de cabecera para Open OBEX
 Summary(pl):	Pliki nag³ówkowe Open OBEX
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 The header files are only needed for development of programs using the
@@ -56,7 +56,7 @@ Summary:	Static Open OBEX library
 Summary(es):	Biblioteca estática de Open OBEX
 Summary(pl):	Biblioteka statyczna Open OBEX
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static Open OBEX library.
