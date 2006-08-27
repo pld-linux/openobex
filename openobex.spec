@@ -12,6 +12,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
 # Source0-md5:	feaa5dfe5151c0e70e8f868fa4648a43
+Patch0:		%{name}-link.patch
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -85,6 +86,7 @@ biblioteki Open OBEX.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
