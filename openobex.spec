@@ -7,12 +7,13 @@ Summary(es):	Biblioteca para usar OBEX
 Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
 Name:		openobex
 Version:	1.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
 # Source0-md5:	feaa5dfe5151c0e70e8f868fa4648a43
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-pc.patch
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -87,6 +88,7 @@ biblioteki Open OBEX.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
