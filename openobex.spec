@@ -3,8 +3,8 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Library for using OBEX
-Summary(es):	Biblioteca para usar OBEX
-Summary(pl):	Biblioteka do obs³ugi protoko³u OBEX
+Summary(es.UTF-8):   Biblioteca para usar OBEX
+Summary(pl.UTF-8):   Biblioteka do obsÅ‚ugi protokoÅ‚u OBEX
 Name:		openobex
 Version:	1.3
 Release:	3
@@ -24,20 +24,20 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This library tries to implement a generic OBEX Session Protocol. It
 does not implement the OBEX Application FrameWork.
 
-%description -l es
-Esta biblioteca procura dar una implementación genérica del protocolo
-OBEX Session Protocol. La implementación de OBEX Application FrameWork
-no está incluida.
+%description -l es.UTF-8
+Esta biblioteca procura dar una implementaciÃ³n genÃ©rica del protocolo
+OBEX Session Protocol. La implementaciÃ³n de OBEX Application FrameWork
+no estÃ¡ incluida.
 
-%description -l pl
-Ta biblioteka to próba implementacji podstawowego protoko³u sesji OBEX
+%description -l pl.UTF-8
+Ta biblioteka to prÃ³ba implementacji podstawowego protokoÅ‚u sesji OBEX
 Session Protocol. OBEX Application FrameWork nie jest
 zaimplementowany.
 
 %package devel
 Summary:	Header files for Open OBEX
-Summary(es):	Ficheros de cabecera para Open OBEX
-Summary(pl):	Pliki nag³ówkowe Open OBEX
+Summary(es.UTF-8):   Ficheros de cabecera para Open OBEX
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe Open OBEX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -45,30 +45,30 @@ Requires:	%{name} = %{version}-%{release}
 The header files are only needed for development of programs using the
 Open OBEX library.
 
-%description devel -l es
-Estos ficheros de cabecera sólo son necesarios para desarrollar
+%description devel -l es.UTF-8
+Estos ficheros de cabecera sÃ³lo son necesarios para desarrollar
 programas que usan la biblioteca Open OBEX.
 
-%description devel -l pl
-W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
-programistów u¿ywaj±cych biblioteki Open OBEX.
+%description devel -l pl.UTF-8
+W pakiecie tym znajdujÄ… siÄ™ pliki nagÅ‚Ã³wkowe, przeznaczone dla
+programistÃ³w uÅ¼ywajÄ…cych biblioteki Open OBEX.
 
 %package static
 Summary:	Static Open OBEX library
-Summary(es):	Biblioteca estática de Open OBEX
-Summary(pl):	Biblioteka statyczna Open OBEX
+Summary(es.UTF-8):   Biblioteca estÃ¡tica de Open OBEX
+Summary(pl.UTF-8):   Biblioteka statyczna Open OBEX
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static Open OBEX library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna Open OBEX.
 
 %package apps
 Summary:	Open OBEX utility programs
-Summary(pl):	Narzêdzia Open OBEX
+Summary(pl.UTF-8):   NarzÄ™dzia Open OBEX
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	openobex-progs
@@ -77,12 +77,12 @@ Obsoletes:	openobex-progs
 This package contains utility programs made to show Open OBEX library
 usage.
 
-%description apps -l es
+%description apps -l es.UTF-8
 Este paquete contiene unas herramientas hechas para demonstrar el uso
 de la biblioteca Open OBEX.
 
-%description apps -l pl
-Ten pakiet zawiera narzêdzia zrobione aby pokazaæ sposób u¿ycia
+%description apps -l pl.UTF-8
+Ten pakiet zawiera narzÄ™dzia zrobione aby pokazaÄ‡ sposÃ³b uÅ¼ycia
 biblioteki Open OBEX.
 
 %prep
