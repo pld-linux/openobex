@@ -3,8 +3,8 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Library for using OBEX
-Summary(es.UTF-8):   Biblioteca para usar OBEX
-Summary(pl.UTF-8):   Biblioteka do obsługi protokołu OBEX
+Summary(es.UTF-8):	Biblioteca para usar OBEX
+Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.3
 Release:	3
@@ -36,8 +36,8 @@ zaimplementowany.
 
 %package devel
 Summary:	Header files for Open OBEX
-Summary(es.UTF-8):   Ficheros de cabecera para Open OBEX
-Summary(pl.UTF-8):   Pliki nagłówkowe Open OBEX
+Summary(es.UTF-8):	Ficheros de cabecera para Open OBEX
+Summary(pl.UTF-8):	Pliki nagłówkowe Open OBEX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -55,8 +55,8 @@ programistów używających biblioteki Open OBEX.
 
 %package static
 Summary:	Static Open OBEX library
-Summary(es.UTF-8):   Biblioteca estática de Open OBEX
-Summary(pl.UTF-8):   Biblioteka statyczna Open OBEX
+Summary(es.UTF-8):	Biblioteca estática de Open OBEX
+Summary(pl.UTF-8):	Biblioteka statyczna Open OBEX
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -68,7 +68,7 @@ Biblioteka statyczna Open OBEX.
 
 %package apps
 Summary:	Open OBEX utility programs
-Summary(pl.UTF-8):   Narzędzia Open OBEX
+Summary(pl.UTF-8):	Narzędzia Open OBEX
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	openobex-progs
