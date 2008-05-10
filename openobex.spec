@@ -17,7 +17,10 @@ Patch1:		%{name}-pc.patch
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	bluez-libs-devel
 BuildRequires:	libtool
+BuildRequires:	libusb-devel
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,6 +43,8 @@ Summary(es.UTF-8):	Ficheros de cabecera para Open OBEX
 Summary(pl.UTF-8):	Pliki nagłówkowe Open OBEX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	bluez-libs-devel
+Requires:	libusb-devel
 
 %description devel
 The header files are only needed for development of programs using the
