@@ -7,7 +7,7 @@ Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.3
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
