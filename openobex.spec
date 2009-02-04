@@ -7,7 +7,7 @@ Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.3
-Release:	6
+Release:	7
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
@@ -19,7 +19,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bluez-libs-devel
 BuildRequires:	libtool
-BuildRequires:	libusb-devel
+BuildRequires:	libusb-compat-devel
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,7 +44,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe Open OBEX
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	bluez-libs-devel
-Requires:	libusb-devel
+Requires:	libusb-compat-devel
 
 %description devel
 The header files are only needed for development of programs using the
