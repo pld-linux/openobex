@@ -6,14 +6,13 @@ Summary:	Library for using OBEX
 Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
-Version:	1.3
-Release:	7
+Version:	1.5
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/openobex/%{name}-%{version}.tar.gz
-# Source0-md5:	feaa5dfe5151c0e70e8f868fa4648a43
-Patch0:		%{name}-link.patch
-Patch1:		%{name}-pc.patch
+Source0:	http://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.gz
+# Source0-md5:	0d83dc86445a46a1b9750107ba7ab65c
+Patch0:		%{name}-pc.patch
 URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -93,7 +92,6 @@ biblioteki Open OBEX.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -110,8 +108,7 @@ biblioteki Open OBEX.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	m4datadir=%{_aclocaldir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -130,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libopenobex.so
 %{_libdir}/libopenobex.la
 %{_includedir}/*
-%{_aclocaldir}/*
 %{_pkgconfigdir}/*
 
 %if %{with static_libs}
