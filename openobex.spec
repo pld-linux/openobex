@@ -8,7 +8,7 @@ Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.5
 Release:	1
-License:	LGPL
+License:	LGPL v2.1+ (library), GPL v2+ (applications)
 Group:		Libraries
 Source0:	http://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.gz
 # Source0-md5:	0d83dc86445a46a1b9750107ba7ab65c
@@ -40,6 +40,7 @@ zaimplementowany.
 Summary:	Header files for Open OBEX
 Summary(es.UTF-8):	Ficheros de cabecera para Open OBEX
 Summary(pl.UTF-8):	Pliki nagłówkowe Open OBEX
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	bluez-libs-devel
@@ -61,6 +62,7 @@ programistów używających biblioteki Open OBEX.
 Summary:	Static Open OBEX library
 Summary(es.UTF-8):	Biblioteca estática de Open OBEX
 Summary(pl.UTF-8):	Biblioteka statyczna Open OBEX
+License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -73,6 +75,7 @@ Biblioteka statyczna Open OBEX.
 %package apps
 Summary:	Open OBEX utility programs
 Summary(pl.UTF-8):	Narzędzia Open OBEX
+License:	GPL v2+
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	openobex-progs
