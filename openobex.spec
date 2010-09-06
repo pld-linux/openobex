@@ -119,20 +119,20 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_libdir}/libopenobex.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenobex.so.?
+%attr(755,root,root) %{_libdir}/libopenobex.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libopenobex.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenobex.so
 %{_libdir}/libopenobex.la
-%{_includedir}/*
-%{_pkgconfigdir}/*
+%{_includedir}/openobex
+%{_pkgconfigdir}/openobex.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libopenobex.a
 %endif
 
 %files apps
