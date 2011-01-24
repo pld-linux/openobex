@@ -17,6 +17,7 @@ URL:		http://openobex.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bluez-libs-devel
+BuildRequires:	gettext-devel
 BuildRequires:	libtool
 BuildRequires:	libusb-compat-devel
 BuildRequires:	pkgconfig
