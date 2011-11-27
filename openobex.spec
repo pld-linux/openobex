@@ -7,7 +7,7 @@ Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.5
-Release:	1
+Release:	2
 License:	LGPL v2.1+ (library), GPL v2+ (applications)
 Group:		Libraries
 Source0:	http://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.gz
