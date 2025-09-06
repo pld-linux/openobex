@@ -1,26 +1,29 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_without	static_libs	# static library
 #
 Summary:	Library for using OBEX
 Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
-Version:	1.5
-Release:	4
+Version:	1.7.2
+Release:	1
 License:	LGPL v2.1+ (library), GPL v2+ (applications)
 Group:		Libraries
-Source0:	http://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.gz
-# Source0-md5:	0d83dc86445a46a1b9750107ba7ab65c
-Patch0:		%{name}-pc.patch
-URL:		http://openobex.sourceforge.net/
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+Source0:	https://downloads.sourceforge.net/openobex/%{name}-%{version}-Source.tar.gz
+# Source0-md5:	f6e0b6cb7dcfd731460a7e9a91429a3a
+URL:		https://openobex.sourceforge.net/
 BuildRequires:	bluez-libs-devel
+BuildRequires:	cmake >= 3.1
+BuildRequires:	docbook-dtd42-xml
+BuildRequires:	docbook-style-xsl-nons
+BuildRequires:	doxygen
 BuildRequires:	gettext-tools
-BuildRequires:	libtool
-BuildRequires:	libusb-compat-devel
+BuildRequires:	libusb-devel >= 1.0
+BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +48,7 @@ License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	bluez-libs-devel
-Requires:	libusb-compat-devel
+Requires:	libusb-devel >= 1.0
 
 %description devel
 The header files are only needed for development of programs using the
@@ -73,13 +76,25 @@ Static Open OBEX library.
 %description static -l pl.UTF-8
 Biblioteka statyczna Open OBEX.
 
+%package apidocs
+Summary:	Documentation for Open OBEX library
+Summary(pl.UTF-8):	Dokumentacja biblioteki Open OBEX
+Group:		Documentation
+BuildArch:	noarch
+
+%description apidocs
+Documentation for Open OBEX library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja biblioteki Open OBEX.
+
 %package apps
 Summary:	Open OBEX utility programs
 Summary(pl.UTF-8):	Narzędzia Open OBEX
 License:	GPL v2+
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	openobex-progs
+Obsoletes:	openobex-progs < 1.0
 
 %description apps
 This package contains utility programs made to show Open OBEX library
@@ -94,25 +109,43 @@ Ten pakiet zawiera narzędzia zrobione aby pokazać sposób użycia
 biblioteki Open OBEX.
 
 %prep
-%setup -q
-%patch -P0 -p1
+%setup -q -n %{name}-%{version}-Source
+
+# FIXME: better group?
+%{__sed} -i -e 's/GROUP="plugdev"/GROUP="usb"/' udev/openobex.rules.in
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__automake}
-%configure \
-	--enable-apps \
-	%{!?with_static_libs:--disable-static}
+%if %{with static_libs}
+install -d build-static
+cd build-static
+%cmake .. \
+	-DBUILD_DOCUMENTATION=OFF \
+	-DBUILD_SHARED_LIBS=OFF
 
 %{__make}
+cd ..
+%endif
+
+install -d build
+cd build
+%cmake ..
+
+%{__make}
+
+%{__make} openobex-apps
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%if %{with static_libs}
+%{__make} -C build-static install \
 	DESTDIR=$RPM_BUILD_ROOT
+%endif
+
+%{__make} -C build install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/html $RPM_BUILD_ROOT%{_docdir}/openobex-apidocs
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -123,14 +156,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
+%attr(755,root,root) %{_sbindir}/obex-check-device
 %attr(755,root,root) %{_libdir}/libopenobex.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenobex.so.1
+%ghost %{_libdir}/libopenobex.so.2
+/lib/udev/rules.d/60-openobex.rules
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libopenobex.so
-%{_libdir}/libopenobex.la
+%{_libdir}/libopenobex.so
 %{_includedir}/openobex
+%{_libdir}/cmake/OpenObex-%{version}
 %{_pkgconfigdir}/openobex.pc
 
 %if %{with static_libs}
@@ -139,10 +174,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libopenobex.a
 %endif
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_docdir}/openobex-apidocs
+
 %files apps
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ircp
 %attr(755,root,root) %{_bindir}/irobex_palm3
 %attr(755,root,root) %{_bindir}/irxfer
+%attr(755,root,root) %{_bindir}/obex_find
 %attr(755,root,root) %{_bindir}/obex_tcp
 %attr(755,root,root) %{_bindir}/obex_test
+%{_mandir}/man1/ircp.1*
+%{_mandir}/man1/irobex_palm3.1*
+%{_mandir}/man1/irxfer.1*
+%{_mandir}/man1/obex_find.1*
+%{_mandir}/man1/obex_tcp.1*
+%{_mandir}/man1/obex_test.1*
