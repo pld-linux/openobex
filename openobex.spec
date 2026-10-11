@@ -7,7 +7,7 @@ Summary(es.UTF-8):	Biblioteca para usar OBEX
 Summary(pl.UTF-8):	Biblioteka do obsługi protokołu OBEX
 Name:		openobex
 Version:	1.7.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+ (library), GPL v2+ (applications)
 Group:		Libraries
 Source0:	https://downloads.sourceforge.net/openobex/%{name}-%{version}-Source.tar.gz
@@ -115,12 +115,15 @@ biblioteki Open OBEX.
 %{__sed} -i -e 's/GROUP="plugdev"/GROUP="usb"/' udev/openobex.rules.in
 
 %build
+# .pc file generation expects relative CMAKE_INSTALL_{INCLUDE,LIB}DIR
 %if %{with static_libs}
 install -d build-static
 cd build-static
 %cmake .. \
 	-DBUILD_DOCUMENTATION=OFF \
-	-DBUILD_SHARED_LIBS=OFF
+	-DBUILD_SHARED_LIBS=OFF \
+	-DCMAKE_INSTALL_INCLUDEDIR=include \
+	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
 
 %{__make}
 cd ..
@@ -128,7 +131,9 @@ cd ..
 
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	-DCMAKE_INSTALL_INCLUDEDIR=include \
+	-DCMAKE_INSTALL_LIBDIR=%{_lib}
 
 %{__make}
 
@@ -157,7 +162,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_sbindir}/obex-check-device
-%attr(755,root,root) %{_libdir}/libopenobex.so.*.*.*
+%{_libdir}/libopenobex.so.*.*.*
 %ghost %{_libdir}/libopenobex.so.2
 /lib/udev/rules.d/60-openobex.rules
 
